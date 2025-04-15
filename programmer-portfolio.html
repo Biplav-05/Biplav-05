@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Biplav Ghimire</title>
+  <!-- Google Fonts for Clean Typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #10b981;
+      --secondary: #4f46e5;
+      --text: #f3f4f6;
+      --background: #0f172a;
+      --accent: #2563eb;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      background-color: var(--background);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Code background effect */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), 
+                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><text x="0" y="15" font-family="monospace" font-size="14" fill="rgba(255,255,255,0.07)">const develop = () => { while(true) { learn(); build(); improve(); } };</text><text x="0" y="35" font-family="monospace" font-size="14" fill="rgba(255,255,255,0.07)">function fetchData(url) { return fetch(url).then(res => res.json()) }</text><text x="0" y="55" font-family="monospace" font-size="14" fill="rgba(255,255,255,0.07)">import { useState, useEffect } from "react";</text><text x="0" y="75" font-family="monospace" font-size="14" fill="rgba(255,255,255,0.07)">SELECT * FROM projects WHERE status = "complete";</text><text x="0" y="95" font-family="monospace" font-size="14" fill="rgba(255,255,255,0.07)">class Developer { constructor() { this.skills = []; this.passion = true; } }</text><text x="0" y="115" font-family="monospace" font-size="14" fill="rgba(255,255,255,0.07)">async function init() { await loadModules(); startApp(); }</text><text x="0" y="135" font-family="monospace" font-size="14" fill="rgba(255,255,255,0.07)">def process_data(data): return [x for x in data if validate(x)]</text><text x="0" y="155" font-family="monospace" font-size="14" fill="rgba(255,255,255,0.07)">for (let i = 0; i < ideas.length; i++) { implement(ideas[i]); }</text><text x="0" y="175" font-family="monospace" font-size="14" fill="rgba(255,255,255,0.07)">.container { display: flex; flex-direction: column; }</text><text x="0" y="195" font-family="monospace" font-size="14" fill="rgba(255,255,255,0.07)">docker-compose up -d</text><text x="0" y="215" font-family="monospace" font-size="14" fill="rgba(255,255,255,0.07)">git commit -m "Implemented new feature"</text><text x="0" y="235" font-family="monospace" font-size="14" fill="rgba(255,255,255,0.07)">npm install --save-dev</text></svg>');
+      background-size: cover;
+      z-index: -1;
+      animation: scrollCode 120s linear infinite;
+    }
+    
+    @keyframes scrollCode {
+      from {
+        background-position: 0 0;
+      }
+      to {
+        background-position: 0 1000px;
+      }
+    }
+    
+    .container {
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(8px);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(79, 70, 229, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      max-width: 90%;
+      width: 600px;
+      z-index: 1;
+    }
+    
+    .greeting {
+      font-size: 1.8rem;
+      color: var(--primary);
+      animation: fadeInUp 1s ease-out;
+      margin-bottom: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    .hero {
+      font-size: 2.4rem;
+      font-weight: 600;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
+      animation-delay: 0.5s;
+    }
+    
+    .highlight {
+      color: var(--secondary);
+      position: relative;
+    }
+    
+    .highlight::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--secondary);
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: expand 1.5s ease-out forwards;
+      animation-delay: 1.5s;
+    }
+    
+    @keyframes expand {
+      to {
+        transform: scaleX(1);
+      }
+    }
+    
+    .bio {
+      font-size: 1.2rem;
+      margin-top: 1.5rem;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
+      animation-delay: 1s;
+      line-height: 1.6;
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+    
+    .bio span {
+      color: var(--primary);
+      font-weight: 600;
+    }
+    
+    .link {
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--accent);
+      transition: all 0.3s ease;
+      padding-bottom: 2px;
+    }
+    
+    .link:hover {
+      color: var(--primary);
+      border-bottom: 1px solid var(--primary);
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      height: 1.2em;
+      background-color: var(--primary);
+      margin-left: 5px;
+      animation: blink 1s infinite;
+    }
+    
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
+      animation-delay: 1.5s;
+    }
+    
+    .social-link {
+      color: var(--text);
+      font-size: 1.4rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-link:hover {
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    @media (max-width: 640px) {
+      .container {
+        padding: 1.5rem;
+      }
+      .greeting {
+        font-size: 1.4rem;
+      }
+      .hero {
+        font-size: 1.8rem;
+      }
+      .bio {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="greeting" id="greeting">Hello</div>
+    <div class="hero" id="hero">I'm <span class="highlight">Biplav Ghimire</span><span class="cursor"></span></div>
+    <div class="bio">
+      I'm a passionate <span>Backend Software Developer</span> with expertise in various backend technologies and <span>Databases</span>.  
+      I'm also a <span>Tech Enthusiast</span>, always excited about learning new things in the tech world.
+    </div>
+    <a class="link" href="https://github.com/Biplav-05" target="_blank">If you want to know more about me, visit my GitHub</a>
+    
+    <div class="social-links">
+      <a href="https://github.com/Biplav-05" target="_blank" class="social-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+      </a>
+      <a href="https://linkedin.com/in/" target="_blank" class="social-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+      </a>
+      <a href="mailto:your.email@example.com" class="social-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const hour = new Date().getHours();
+    let greeting = "Hello";
+    if (hour >= 5 && hour < 12) greeting = "🌅 Good Morning";
+    else if (hour >= 12 && hour < 17) greeting = "☀️ Good Afternoon";
+    else if (hour >= 17 && hour < 21) greeting = "🌇 Good Evening";
+    else greeting = "🌙 Good Night";
+    document.getElementById("greeting").textContent = greeting;
+  </script>
+</body>
+</html>
